@@ -823,7 +823,7 @@ html:not(.js) .menu-btn,html:not(.js) .theme-btn,html:not(.js) .to-top{display:n
     <form class="form-card" id="contactForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
       <!-- Web3Forms delivers this form to hr@unleasedconsultants.com.
            The access key is not a secret; it is a public alias for the address. -->
-      <input type="hidden" name="access_key" id="f-key" value="REPLACE_WITH_YOUR_ACCESS_KEY">
+      <input type="hidden" name="access_key" id="f-key" value="35ae2bba-2e3e-4a35-a2f2-206b6f81f1be">
       <input type="hidden" name="subject" id="f-subject" value="New enquiry from unleasedconsultants.com">
       <input type="hidden" name="from_name" value="Unleased Tech Consultants website">
       <!-- Honeypot: bots fill this in, people never see it. -->
@@ -1065,14 +1065,10 @@ html:not(.js) .menu-btn,html:not(.js) .theme-btn,html:not(.js) .to-top{display:n
      hr@unleasedconsultants.com. GitHub Pages cannot send email itself,
      so a forwarding service is required.
 
-     SETUP (one time, about two minutes):
-       1. Go to https://web3forms.com and enter hr@unleasedconsultants.com
-       2. Confirm the verification email that arrives
-       3. Paste the access key you receive into the value of
-          <input name="access_key"> near the top of the form above
-
-     Until a real key is pasted in, the form falls back to opening the
-     visitor's email app so it never silently fails.
+     The access key is already set on the <input name="access_key"> field
+     above. It is a public alias for the address, not a secret, so it is
+     safe in client-side code. To point the form at a different inbox,
+     create a new key at https://web3forms.com and swap that value.
   ------------------------------------ */
   var form = document.getElementById('contactForm');
   if (form) {
