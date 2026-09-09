@@ -170,6 +170,43 @@ html:not(.js) .sculpture-upper,html:not(.js) .sculpture-middle{animation:none!im
 .capability-marquee{padding-top:18px;padding-bottom:24px}
 @media(prefers-reduced-motion:reduce){.motion-control{display:none}}
 @media print{.motion-control{display:none}}
+
+/* Purposeful interaction: visible destinations, keyboard parity, restrained motion. */
+.service-card{position:relative}
+.service-link{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;margin-top:24px;padding-top:16px;border-top:1px solid #504758;color:#e7dbff;font-size:14px;font-weight:500;text-decoration:none;grid-column:2}
+.service-link::after{content:"";position:absolute;inset:0;border-radius:10px}
+.service-link span,.project-link span{display:inline-block;flex-shrink:0}
+.service-card:focus-within{border-color:#c6b0ff;box-shadow:0 0 0 2px #c6b0ff}
+.service-link:focus-visible{outline:none}
+.project-card:focus-within{border-top-color:var(--accent)}
+.project-link:focus-visible,.text-link:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:2px}
+.project-link:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
+.expertise-list summary{border-radius:6px}
+.expertise-list summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left}
+.nav-links a[aria-current]::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+@media(hover:hover) and (pointer:fine){
+ .service-card:hover{border-color:#b89aef;background:#322b42;box-shadow:0 14px 32px #0e0a2429}
+ [data-theme="dark"] .service-card:hover{background:#2d263d;border-color:#b89aef}
+ .service-card:hover .service-link{color:#fff}
+ .project-card:hover{border-top-color:var(--accent)}
+ .project-card:hover .project-number{color:var(--accent)}
+ .project-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+ .expertise-list summary:hover{color:var(--accent);background:var(--soft)}
+ .nav-links a:hover::after{transform:scaleX(1)}
+}
+@media(prefers-reduced-motion:no-preference){
+ .service-card,.project-card,.project-number,.project-link,.expertise-list summary{transition:background-color .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease,transform .25s ease}
+ .service-link span,.project-link span,.service-symbol svg,.nav-links a::after{transition:transform .25s ease}
+ .service-card:focus-within .service-link span,.project-link:focus-visible span{transform:translate(3px,-3px)}
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .service-card:hover{transform:translateY(-5px)}
+ .service-card:hover .service-symbol svg{transform:translateY(-3px)}
+ .service-card:hover .service-link span,.project-link:hover span{transform:translate(3px,-3px)}
+}
+
 </style></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" id="siteHeader"><div class="wrap nav"><a class="brand" href="#top" aria-label="Unleased Tech Consultants — home">
@@ -242,9 +279,9 @@ html:not(.js) .sculpture-upper,html:not(.js) .sculpture-middle{animation:none!im
 
 <section class="section services" id="services" aria-labelledby="servicesTitle"><div class="wrap"><div class="section-top"><div><p class="eyebrow">01 / What we do</p><h2 id="servicesTitle">Expertise where<br>it makes a difference.</h2></div><p>Bring us a business challenge, a delivery gap or a specialist hiring need. We’ll help you define the support that fits.</p></div>
 <div class="service-grid">
-<article class="service-card"><div class="service-symbol"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="m5 15 19-11 19 11-19 11Z"/><path d="m5 24 19 11 19-11M5 33l19 11 19-11"/></svg><span class="card-index">01</span></div><h3>Enterprise technology consulting</h3><p>Build, extend and connect the systems at the heart of your business. Our SAP expertise spans ECC and S/4HANA, BTP development, integration and data platforms, alongside Salesforce and wider enterprise applications.</p><div class="service-tags"><span>Implementation</span><span>Integration</span><span>Modernization</span></div></article>
-<article class="service-card"><div class="service-symbol"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c12 10 12 26 0 36-12-10-12-26 0-36Z"/><path d="m11 12 26 24M11 36l26-24"/></svg><span class="card-index">02</span></div><h3>AI, data &amp; cloud engineering</h3><p>Put emerging capabilities to practical use. Explore AI use cases, strengthen your data foundations and support the cloud platforms and workflows your teams rely on.</p><div class="service-tags"><span>Applied AI</span><span>Data engineering</span><span>DevOps</span></div></article>
-<article class="service-card"><div class="service-symbol"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="11" r="6"/><circle cx="9" cy="35" r="6"/><circle cx="39" cy="35" r="6"/><path d="m21 17-8 12M27 17l8 12M15 35h18"/></svg><span class="card-index">03</span></div><h3>Specialist talent &amp; delivery teams</h3><p>Find the expertise your next milestone calls for. Engage a specialist, strengthen an existing team or recruit for a permanent role, with a model shaped around your needs.</p><div class="service-tags"><span>Contract</span><span>Permanent</span><span>Project teams</span></div></article>
+<article class="service-card"><div class="service-symbol"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="m5 15 19-11 19 11-19 11Z"/><path d="m5 24 19 11 19-11M5 33l19 11 19-11"/></svg><span class="card-index">01</span></div><h3>Enterprise technology consulting</h3><p>Build, extend and connect the systems at the heart of your business. Our SAP expertise spans ECC and S/4HANA, BTP development, integration and data platforms, alongside Salesforce and wider enterprise applications.</p><div class="service-tags"><span>Implementation</span><span>Integration</span><span>Modernization</span></div><a class="service-link" href="#technologies">Explore enterprise expertise<span aria-hidden="true">↗</span></a></article>
+<article class="service-card"><div class="service-symbol"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M6 24h36M24 6c12 10 12 26 0 36-12-10-12-26 0-36Z"/><path d="m11 12 26 24M11 36l26-24"/></svg><span class="card-index">02</span></div><h3>AI, data &amp; cloud engineering</h3><p>Put emerging capabilities to practical use. Explore AI use cases, strengthen your data foundations and support the cloud platforms and workflows your teams rely on.</p><div class="service-tags"><span>Applied AI</span><span>Data engineering</span><span>DevOps</span></div><a class="service-link" href="#technologies">Explore engineering capabilities<span aria-hidden="true">↗</span></a></article>
+<article class="service-card"><div class="service-symbol"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="24" cy="11" r="6"/><circle cx="9" cy="35" r="6"/><circle cx="39" cy="35" r="6"/><path d="m21 17-8 12M27 17l8 12M15 35h18"/></svg><span class="card-index">03</span></div><h3>Specialist talent &amp; delivery teams</h3><p>Find the expertise your next milestone calls for. Engage a specialist, strengthen an existing team or recruit for a permanent role, with a model shaped around your needs.</p><div class="service-tags"><span>Contract</span><span>Permanent</span><span>Project teams</span></div><a class="service-link" href="#talent">Explore engagement models<span aria-hidden="true">↗</span></a></article>
 </div><div class="services-bottom"><p>One specialist or a broader delivery need.</p><a href="#contact">Start with a conversation <span aria-hidden="true">↗</span></a></div></div></section>
 
 <section class="section" id="technologies" aria-labelledby="techTitle"><div class="wrap expertise-layout"><div class="expertise-copy"><p class="eyebrow">02 / Our expertise</p><h2 id="techTitle">Deep in the detail.<br>Clear on the purpose.</h2><p>Technology choices should serve the work. Our capabilities span core enterprise platforms, modern engineering and the business processes that connect them.</p><a class="text-link" href="#contact">Discuss your technology needs <span aria-hidden="true">↗</span></a></div>
